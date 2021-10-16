@@ -113,13 +113,14 @@ while utime.ticks_diff(deadline4, utime.time()) > 0:
     omega = dcmotor.sim(load, power, 32e-6)
     power = pid(omega, 32e-6)
     if ((dcmotor._last_time - last_time) > print_interval):
-    	print(dcmotor._last_time,
+    	print(dcmotor._last_time)
 
 timestep = 1e-7
 voltage = 0
 omega = 0
 last_time = 0
 pid0 = PID(33, 113675, 0.002322, setpoint=30)
+dcmotor0 = DCMotor()
 # Compute until 0.001 seconds (not realtime).
 while (dcmotor0._last_time) < 0.001:
   omega = dcmotor0.sim(0.3,voltage,timestep)
